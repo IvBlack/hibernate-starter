@@ -13,7 +13,20 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e9d6b8bb-1dcc-480f-8f50-094404cdef28">
-      <console name="hiber-connect" type="STANDARD" schema="postgres" session="Main" />
+      <console name="hiber-connect" type="STANDARD" schema="public" session="Main"><![CDATA[CREATE TABLE users 
+(
+    username varchar(128) primary key,
+    firstname varchar(128),
+    lastname varchar(128),
+    birth_date date,
+    age int
+);
+SELECT table_name FROM information_schema.tables
+WHERE table_schema NOT IN ('information_schema','pg_catalog');
+SELECT column_name, column_default, data_type FROM "users";
+SELECT count(*) FROM users;
+SELECT count(*) FROM weather;
+SELECT datname FROM pg_catalog;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,6 +34,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -34,7 +50,7 @@
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="14.6" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
@@ -97,16 +113,16 @@
             <object-type name="CONSTRAINT" enabled="true" />
             <object-type name="DATASET_TRIGGER" enabled="true" />
             <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SYNONYM" enabled="false" />
             <object-type name="SEQUENCE" enabled="true" />
             <object-type name="PROCEDURE" enabled="true" />
             <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
+            <object-type name="PACKAGE" enabled="false" />
+            <object-type name="TYPE" enabled="false" />
             <object-type name="TYPE_ATTRIBUTE" enabled="true" />
             <object-type name="ARGUMENT" enabled="true" />
             <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="CLUSTER" enabled="false" />
             <object-type name="DBLINK" enabled="true" />
           </object-type-filter>
           <object-name-filters />
@@ -125,7 +141,7 @@
           <object-type name="USER" enabled="true" />
           <object-type name="ROLE" enabled="true" />
           <object-type name="PRIVILEGE" enabled="true" />
-          <object-type name="CHARSET" enabled="true" />
+          <object-type name="CHARSET" enabled="false" />
           <object-type name="TABLE" enabled="true" />
           <object-type name="VIEW" enabled="true" />
           <object-type name="MATERIALIZED_VIEW" enabled="true" />
@@ -510,5 +526,8 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
   </component>
 </project>
