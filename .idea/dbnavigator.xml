@@ -23,7 +23,7 @@
 );
 SELECT table_name FROM information_schema.tables
 WHERE table_schema NOT IN ('information_schema','pg_catalog');
-SELECT column_name, column_default, data_type FROM "users";
+SELECT username, firstname, lastname, birth_date, age FROM "users";
 SELECT count(*) FROM users;
 SELECT count(*) FROM weather;
 SELECT datname FROM pg_catalog;]]></console>
