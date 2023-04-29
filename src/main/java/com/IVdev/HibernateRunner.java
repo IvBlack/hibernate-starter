@@ -1,16 +1,13 @@
-package com.ivdev;
+package com.IVdev;
 
-import com.ivdev.entity.User;
+import com.IVdev.entity.Role;
+import com.IVdev.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.concurrent.BlockingDeque;
 
 public class HibernateRunner {
     public static void main(String[] args) throws SQLException {
@@ -42,11 +39,12 @@ public class HibernateRunner {
 
             //создадим сущность и сохраним в БД
             User user = User.builder()
-                    .username("ivan@gmail.com")
-                    .firstname("Ivan")
-                    .lastname("Ryaba")
-                    .birthDate(LocalDate.of(2020, 1, 15))
-                    .age(19)
+                    .username("ivan@ya.ru")
+                    .age(15)
+                    .date(LocalDate.of(2020, 1, 15))
+                    .firstname("IV")
+                    .lastname("B.")
+                    .role(Role.ADMIN)
                     .build();
             ss.persist(user);
 

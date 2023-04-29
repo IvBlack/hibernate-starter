@@ -9,10 +9,11 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">pass2023</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="show_sql">true</property>
-        <property name="format_sql">true</property>
+        <!--<property name="show_sql">true</property>
+        <property name="format_sql">true</property>-->
+
 
         <!--Вместо директивы addAnnotatedClass-->
-        <mapping class="com.ivdev.entity.User"></mapping>
+        <mapping class="com.IVdev.entity.User"></mapping>
     </session-factory>
 </hibernate-configuration>

@@ -19,14 +19,17 @@
     firstname varchar(128),
     lastname varchar(128),
     birth_date date,
-    age int
+    age int,
+    role varchar
 );
 SELECT table_name FROM information_schema.tables
 WHERE table_schema NOT IN ('information_schema','pg_catalog');
-SELECT username, firstname, lastname, birth_date, age FROM "users";
-SELECT count(*) FROM users;
+SELECT username, age, birth_date, firstname, lastname, role FROM "users";
 SELECT count(*) FROM weather;
-SELECT datname FROM pg_catalog;]]></console>
+SELECT count(*) FROM weather;
+SELECT datname FROM pg_catalog;
+DROP TABLE test_hiber.users;
+DROP SCHEMA test_hiber CASCADE;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -41,6 +44,9 @@ SELECT datname FROM pg_catalog;]]></console>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
+  </component>
+  <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
+    <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>

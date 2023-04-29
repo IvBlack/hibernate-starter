@@ -1,4 +1,4 @@
-package com.ivdev.entity;
+package com.IVdev.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 //POJO-class с условиями есть сущность: неImmutable, private-поля, пустой конструктор, @Entity, @Id
 
@@ -23,9 +22,10 @@ import java.util.Objects;
 public class User {
     @Id
     private String username;
+    private Integer age;
+    @Column(name = "birth_date")
+    private LocalDate date;
     private String firstname;
     private String lastname;
-    @Column(name = "birth_date")
-    private LocalDate birthDate;
-    private Integer age;
+    private Role role;
 }
