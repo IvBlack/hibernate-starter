@@ -1,5 +1,7 @@
 package com.IVdev;
 
+import com.IVdev.converter.BirthdayConverter;
+import com.IVdev.entity.Birthday;
 import com.IVdev.entity.Role;
 import com.IVdev.entity.User;
 import org.hibernate.Session;
@@ -27,6 +29,10 @@ public class HibernateRunner {
         Configuration configuration = new Configuration();
 //        configuration.setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy());
 //        configuration.addAnnotatedClass(User.class);
+
+        //автоустановка кастомного конвертера
+        //hibernate автоматически применит конвертер ко всем полям Birthday в сущностях
+        configuration.addAttributeConverter(BirthdayConverter.class, true);
         configuration.configure();
 
         //возвращает фабрику на основании всех полей класса Configuration + cfg.xml
@@ -40,8 +46,7 @@ public class HibernateRunner {
             //создадим сущность и сохраним в БД
             User user = User.builder()
                     .username("ivan@ya.ru")
-                    .age(15)
-                    .date(LocalDate.of(2020, 1, 15))
+                    .birthDate(new Birthday(LocalDate.of(2020, 1, 15)))
                     .firstname("IV")
                     .lastname("B.")
                     .role(Role.ADMIN)

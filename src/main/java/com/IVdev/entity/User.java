@@ -1,9 +1,7 @@
 package com.IVdev.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.IVdev.converter.BirthdayConverter;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,10 +20,12 @@ import java.time.LocalDate;
 public class User {
     @Id
     private String username;
-    private Integer age;
+
+    @Convert(converter = BirthdayConverter.class)
     @Column(name = "birth_date")
-    private LocalDate date;
+    private Birthday birthDate;
     private String firstname;
     private String lastname;
+    @Enumerated(EnumType.STRING)
     private Role role;
 }

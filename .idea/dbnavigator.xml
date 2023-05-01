@@ -19,16 +19,15 @@
     firstname varchar(128),
     lastname varchar(128),
     birth_date date,
-    age int,
     role varchar
 );
 SELECT table_name FROM information_schema.tables
 WHERE table_schema NOT IN ('information_schema','pg_catalog');
-SELECT username, age, birth_date, firstname, lastname, role FROM "users";
+SELECT username, birth_date, firstname, lastname, role FROM "users";
 SELECT count(*) FROM weather;
 SELECT count(*) FROM weather;
 SELECT datname FROM pg_catalog;
-DROP TABLE test_hiber.users;
+DROP TABLE users;
 DROP SCHEMA test_hiber CASCADE;]]></console>
     </connection>
   </component>

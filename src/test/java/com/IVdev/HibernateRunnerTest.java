@@ -1,5 +1,6 @@
 package com.IVdev;
 
+import com.IVdev.entity.Birthday;
 import com.IVdev.entity.Role;
 import com.IVdev.entity.User;
 import jakarta.persistence.Column;
@@ -24,8 +25,7 @@ class HibernateRunnerTest {
     void checkReflectionAPI() throws SQLException, IllegalAccessException {
         User user = User.builder()
                 .username("ivan@ya.ru")
-                .age(15)
-                .date(LocalDate.of(2020, 1, 15))
+                .birthDate(new Birthday(LocalDate.of(2020, 1, 15)))
                 .firstname("IV")
                 .lastname("B.")
                 .role(Role.ADMIN)
