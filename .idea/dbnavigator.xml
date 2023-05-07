@@ -19,7 +19,8 @@
     firstname varchar(128),
     lastname varchar(128),
     birth_date date,
-    role varchar
+    role varchar,
+    info JSONB
 );
 SELECT table_name FROM information_schema.tables
 WHERE table_schema NOT IN ('information_schema','pg_catalog');

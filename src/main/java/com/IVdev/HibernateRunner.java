@@ -4,6 +4,8 @@ import com.IVdev.converter.BirthdayConverter;
 import com.IVdev.entity.Birthday;
 import com.IVdev.entity.Role;
 import com.IVdev.entity.User;
+import com.IVdev.type.JsonType;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -33,6 +35,7 @@ public class HibernateRunner {
         //автоустановка кастомного конвертера
         //hibernate автоматически применит конвертер ко всем полям Birthday в сущностях
         configuration.addAttributeConverter(BirthdayConverter.class, true);
+        configuration.registerTypeOverride(new JsonBinaryType());
         configuration.configure();
 
         //возвращает фабрику на основании всех полей класса Configuration + cfg.xml
@@ -50,6 +53,12 @@ public class HibernateRunner {
                     .firstname("IV")
                     .lastname("B.")
                     .role(Role.ADMIN)
+                    .info("""
+                            {
+                                "name": "Ivan",
+                                "id": 25
+                            }
+                            """)
                     .build();
             ss.persist(user);
 

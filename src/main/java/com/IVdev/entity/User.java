@@ -1,11 +1,16 @@
 package com.IVdev.entity;
 
 import com.IVdev.converter.BirthdayConverter;
+import com.IVdev.type.JsonType;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.*;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDate;
 
@@ -28,4 +33,8 @@ public class User {
     private String lastname;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private String info;
 }
