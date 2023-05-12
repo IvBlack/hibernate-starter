@@ -35,7 +35,7 @@ public class HibernateRunner {
         //автоустановка кастомного конвертера
         //hibernate автоматически применит конвертер ко всем полям Birthday в сущностях
         configuration.addAttributeConverter(BirthdayConverter.class, true);
-        configuration.registerTypeOverride(new JsonBinaryType());
+        //configuration.registerTypeOverride(new JsonBinaryType());
         configuration.configure();
 
         //возвращает фабрику на основании всех полей класса Configuration + cfg.xml
@@ -47,20 +47,27 @@ public class HibernateRunner {
             ss.beginTransaction();
 
             //создадим сущность и сохраним в БД
-            User user = User.builder()
-                    .username("ivan@ya.ru")
-                    .birthDate(new Birthday(LocalDate.of(2020, 1, 15)))
-                    .firstname("IV")
-                    .lastname("B.")
-                    .role(Role.ADMIN)
-                    .info("""
-                            {
-                                "name": "Ivan",
-                                "id": 25
-                            }
-                            """)
-                    .build();
-            ss.persist(user);
+//            User user = User.builder()
+//                    .username("ivan@ya.ru")
+//                    .birthDate(new Birthday(LocalDate.of(2020, 1, 15)))
+//                    .firstname("IV")
+//                    .lastname("B.")
+//                    .role(Role.ADMIN)
+//                    .info("""
+//                            {
+//                                "name": "Ivan",
+//                                "id": 25
+//                            }
+//                            """)
+//                    .build();
+            //persist используется для save-опции с версии 6.0
+//            ss.persist(user);
+//            ss.update(user);
+            //используется remove() с версии 6.0
+//            ss.delete(user);
+            //используется merge  с версии 6.0
+//            ss.saveOrUpdate(user);
+            User user = ss.get(User.class, "\"ivan@ya.ru\"");
 
             ss.getTransaction().commit();
         }
