@@ -67,8 +67,20 @@ public class HibernateRunner {
 //            ss.delete(user);
             //используется merge  с версии 6.0
 //            ss.saveOrUpdate(user);
-            User user = ss.get(User.class, "\"ivan@ya.ru\"");
 
+            /*
+            SessionFactory: Enitites + MetaModel + BasicTypes.
+
+            get работает через byId, что возвращает сущность по ее идентификатору
+            id - ключевой момент работы hibernate
+            Сущность тесно связана с классом EntityPersister, что получается из метамодели фабрики сессий.
+            EntityPersister преобразует объектную модель - в реляционную и обратно, ответственнен за CRUD-операции над Entity
+            Количество EntityPersister == количеству сущностей.
+            В метамодели хранится инфо о всех сущностях (EntityPersisterMap) и типах в приложении, в т.ч. и basic
+            После byId в цепочке вызывается метод load (основан на listeners), что знает, как загружать соответствующую сущность.
+            */
+
+            User user = ss.get(User.class, "\"ivan@ya.ru\"");
             ss.getTransaction().commit();
         }
     }
