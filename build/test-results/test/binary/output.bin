@@ -1,0 +1,7 @@
+insert
+into
+public.users
+4(username, birth_date, firstname, lastname, role, )
+values
+(?, ?, ?, ?, ?, ?)
+
