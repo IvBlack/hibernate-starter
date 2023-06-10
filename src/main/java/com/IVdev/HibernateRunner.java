@@ -4,21 +4,26 @@ import com.IVdev.entity.User;
 import com.IVdev.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 
 public class HibernateRunner {
+
+    //use Logger only from slf4j
+    private static final Logger log = LoggerFactory.getLogger(HibernateRunner.class);
     public static void main(String[] args) throws SQLException {
 
-        //entyty is transient
+        //entity is transient
         User user = User.builder()
                 .username("ivan@gmail.com")
                 .lastname("Ivanov")
                 .firstname("Ivan")
                 .build();
 
-        //возвращает фабрику на основании всех полей класса Configuration + cfg.xml
-        //один экземпляр на все приложение, как и connection pool
+        //returns a factory based on all fields of the Configuration class + cfg.xml
+        //one instance for the entire application, just like the connection pool
         try(SessionFactory sf = HibernateUtil.buildSessionFactory()) {
             try(Session session1 = sf.openSession()) {
                 session1.beginTransaction();

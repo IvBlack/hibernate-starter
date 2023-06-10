@@ -1,11 +1,13 @@
 package com.IVdev.util;
 
 import com.IVdev.converter.BirthdayConverter;
+import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 //вынесем функционал для сессий из HibernateRunner в отдельный класс
 //для удобства тестирования + чистоты кода
+@UtilityClass
 public class HibernateUtil {
     public static SessionFactory buildSessionFactory() {
 
