@@ -38,10 +38,10 @@
     </logger>
 
     <!-- parent-child dependency from upper logger through package hierarchy-->
-<!--    <logger name="com.IVdev.entity" additivity="false">-->
-<!--        <level value="info"/>-->
-<!--        <appender-ref ref="console"/>-->
-<!--    </logger>-->
+    <logger name="com.IVdev.entity" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="console"/>
+    </logger>
 
     <!-- root logger, facade that decides which appenders send messages to-->
     <root>

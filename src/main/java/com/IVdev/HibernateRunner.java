@@ -2,6 +2,7 @@ package com.IVdev;
 
 import com.IVdev.entity.User;
 import com.IVdev.util.HibernateUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -9,10 +10,11 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 
+@Slf4j
 public class HibernateRunner {
-
     //use Logger only from slf4j
-    private static final Logger log = LoggerFactory.getLogger(HibernateRunner.class);
+    //not necessary if annotation @Slf4j created
+    //private static final Logger log = LoggerFactory.getLogger(HibernateRunner.class);
     public static void main(String[] args) throws SQLException {
 
         //entity is transient
